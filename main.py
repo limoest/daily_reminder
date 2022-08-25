@@ -5,15 +5,15 @@ from datetime import datetime, date
 from zhdate import ZhDate
 import sys
 import os
- 
- 
+
+
 def get_color():
     # 获取随机颜色
     get_colors = lambda n: list(map(lambda i: "#" + "%06x" % random.randint(0, 0xFFFFFF), range(n)))
     color_list = get_colors(100)
     return random.choice(color_list)
- 
- 
+
+
 def get_access_token():
     # appId
     app_id = config["app_id"]
@@ -22,7 +22,7 @@ def get_access_token():
     post_url = ("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={}&secret={}"
                 .format(app_id, app_secret))
     try:
-        access_token = "60_YrZGnLdwnbhYLwqaJXYyQxtiD9c9w89Imsx6uNDiANWeio6Vq6CeQj9WACtowXReoRZ9wsDWEeb_0LbJtqCnSsehwUy1m26ufmKuQw3VGLXpbYPLy76h0QitYw6YzPkdwCFLFOOgAXY6K_x8RNGaAAANJC"
+        access_token = get(post_url).json()['access_token']
     except KeyError:
         print("获取access_token失败，请检查app_id和app_secret是否正确")
         os.system("pause")
