@@ -5,14 +5,15 @@ from datetime import datetime, date
 from zhdate import ZhDate
 import sys
 import os
- 
+nowtime = datetime.utcnow() + timedelta(hours=8)  
+today = datetime.strptime(str(nowtime.date()), "%Y-%m-%d") 
  
 def get_color():
     # 获取随机颜色
     get_colors = lambda n: list(map(lambda i: "#" + "%06x" % random.randint(0, 0xFFFFFF), range(n)))
     color_list = get_colors(100)
     return random.choice(color_list)
- 
+    today = datetime.now()
  
 def get_access_token():
     # appId
@@ -58,7 +59,9 @@ def get_weather(region):
     temp = response["now"]["temp"] + u"\N{DEGREE SIGN}" + "C"
     # 风向
     wind_dir = response["now"]["windDir"]
-    return weather, temp, wind_dir
+    # 湿度
+    humidity = response["now"]["humidity"]
+    return weather, temp, wind_dir, humidity
  
  
 def get_birthday(birthday, year, today):
