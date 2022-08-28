@@ -60,6 +60,21 @@ def get_weather(region):
     wind_dir = response["now"]["windDir"]
     return weather, temp, wind_dir
  
+ def lucky():
+    if ( Whether_lucky!=False):
+        try:
+            conn = http.client.HTTPSConnection('api.tianapi.com')
+            params = urllib.parse.urlencode({'key':tianxing_API,'astro':astro})
+            headers = {'Content-type':'application/x-www-form-urlencoded'}
+            conn.request('POST','/star/index',params,headers)
+            res = conn.getresponse()
+            data = res.read()
+            data = json.loads(data)
+            data = "爱情指数："+str(data["newslist"][1]["content"])+"   工作指数："+str(data["newslist"][2]["content"])+"\n今日概述："+str(data["newslist"][8]["content"])
+            return data
+        except:
+            return ("星座运势获取失败，请检查天行API是否填写正确")
+
  
 def get_birthday(birthday, year, today):
     birthday_year = birthday.split("-")[0]
