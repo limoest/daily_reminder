@@ -1,29 +1,29 @@
 {
 # 公众号配置
 # 公众号appId
-"app_id": "",
+"app_id": "wx6cf2dd4284a9152b",
 # 公众号appSecret
-"app_secret": "",
+"app_secret": "963f8b78eab6e5912d59ec8e38fa94b1",
 # 模板消息id
-"template_id": "",
+"template_id": "qcBVQ26zD0Z20E386jnGvb5UMHLXHoqXFeV2jLj5axE",
 # 接收公众号消息的微信号，如果有多个，需要在[]里用英文逗号间隔，例如["wx1", "wx2"]
-"user": [""],
+"user": ["oDilF6FVvQUea1yzEX2sQgUiQpjQ"],
 
 # 信息配置
 # 和风天气apikey
-"weather_key": "",
+"weather_key": "dcd86c2f2b104f619730a073b4a97ed3",
 # 天行数据apikey
-"tian_api": "",
+"tian_api": "4aa988aef3bea23a057e05ffd79f71eb",
 # 所在地区，可为省，城市，区，县，同时支持国外城市，例如伦敦
-"region": "番禺区",
+"region": "锦江区",
 # 生日1
-"birthday1": {"name": "小宝", "birthday": "1997-01-01"},
+"birthday1": {"name": "小宝", "birthday": "2020-01-01"},
 # 生日2
-"birthday2": {"name": "小林", "birthday": "r1997-01-01"},
+"birthday2": {"name": "小林", "birthday": "r2002-01-01"},
 # 纪念日1，会计算累计时间，格式"YYYY-MM-DD"
-"commemoration_day1": "2021-01-01",
+"恋爱日": "2021-01-01",
 # 纪念日2，同上
-"commemoration_day2": "2021-01-01",
+"见面日": "2021-01-01",
 # 金句中文，留空默认显示金山的每日金句
 "note_ch": "",
 # 金句英文
