@@ -1,3 +1,5 @@
+from calendar import week
+from msilib.schema import PublishComponent
 import random
 from time import localtime
 from requests import get, post
@@ -5,6 +7,7 @@ from datetime import datetime, date
 from zhdate import ZhDate
 import sys
 import os
+ 
  
  
 def get_color():
@@ -116,13 +119,66 @@ def get_ciba():
  
  
 def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en):
+   
     url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
-    year = localtime().tm_year
-    month = localtime().tm_mon
-    day = localtime().tm_mday
+    
+    year = localtime().tm_year#2022
+    month = localtime().tm_mon#9月
+    day = localtime().tm_mday#1号
     today = datetime.date(datetime(year=year, month=month, day=day))
-    week = week_list[today.isoweekday() % 7]
+    week = week_list[today.isoweekday() % 7]#星期
+    
+    if(week)!=("星期六")and("星期日"):
+        while(True):
+            if(week)==("星期一"):
+                note_en=("""今天是星期一
+早上第一节是PHP课程
+上课地点是七教302
+早上第二节是数据库
+上课地点是九教402
+下午是Linux操作系统
+上课地点是七教401""")
+                break
+            if(week)==("星期二"):
+                note_en=("""今天是星期二
+早上第一节是数据库
+上课地点是九教402
+早上第二节是形势与政策
+上课地点是七教509
+下午是大学生创业
+上课地点是十教201""")
+                break
+            if(week)==("星期三"):
+                note_en=("""今天是星期三
+早上第一节是python
+上课地点是九教410
+早上第二节PHP课程
+上课地点是七教302
+下午第一季是JAVA实战
+上课地点是九教402
+下午第二节是习近平特色社会主义思想
+上课地点是七教407""")
+                break
+            if(week)==("星期四"):
+                note_en=("""今天是星期四
+早上第一节是网页动画
+上课地点是七教402
+下午是JAVA实战
+上课地点是九教402""")
+                break
+            if(week)==("星期五"):
+                note_en=("""今天是星期五
+早上第一节是体育课
+上课地点随机应变
+早上第二节是习近平特色社会主义思想
+上课地点是七教407""")
+                note_ch = get_ciba()
+                break
+    else:
+        note_en=("今天是周末，记得补英语！！！")        
+                 
+    
     # 获取在一起的日子的日期格式
     love_year = int(config["love_date"].split("-")[0])
     love_month = int(config["love_date"].split("-")[1])
@@ -189,6 +245,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
                       'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
     }
+    
     response = post(url, headers=headers, json=data).json()
     if response["errcode"] == 40037:
         print("推送消息失败，请检查模板id是否正确")
@@ -199,6 +256,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     elif response["errcode"] == 0:
         print("推送消息成功")
     else:
+        
         print(response)
  
  
@@ -222,12 +280,16 @@ if __name__ == "__main__":
     # 传入地区获取天气信息
     region = config["region"]
     weather, temp, wind_dir = get_weather(region)
-    note_ch = config["note_ch"]
-    note_en = config["note_en"]
-    if note_ch == "" and note_en == "":
-        # 获取词霸每日金句
-        note_ch, note_en = get_ciba()
+    
+    
+    note_ch = get_ciba()
+    note_en = week
+    
+    
+   
+       
     # 公众号推送消息
     for user in users:
         send_message(user, accessToken, region, weather, temp, wind_dir, note_ch, note_en)
+        
     os.system("pause")
