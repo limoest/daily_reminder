@@ -59,8 +59,29 @@ def get_weather(region):
     # 风向
     wind_dir = response["now"]["windDir"]
     return weather, temp, wind_dir
- 
- 
+   
+def get_loveword():
+   url = "http://api.tianapi.com/caihongpi/index?key=a49b9ca768dff81a872cbfbb1b2e8f8a"
+   headers = {
+        'Content-Type': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                      'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+    }
+   r = get(url, headers=headers)
+   love_word = r.json()["newslist"][0]["content"]
+   return love_word
+
+def get_xingzuo():
+   url = "http://api.tianapi.com/star/index?key=a49b9ca768dff81a872cbfbb1b2e8f8a&astro=cancer"
+   headers = {
+        'Content-Type': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                      'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+    }
+   r = get(url, headers=headers)
+   love_xz = r.json()["newslist"]
+   return love_xz
+  
 def get_birthday(birthday, year, today):
     birthday_year = birthday.split("-")[0]
     # 判断是否为农历生日
@@ -115,7 +136,9 @@ def get_ciba():
     return note_ch, note_en
  
  
-def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en):
+def send_message(to_user, access_token, region_name1, weather1,temp1 ,wind_dir1, region_name2 ,  weather2 , 
+                 temp2, wind_dir2 , love_word, love_xztp1,love_xzcon1,love_xztp2,love_xzcon2
+                ,love_xztp3,love_xzcon3,love_xztp4,love_xzcon4):
     url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
     year = localtime().tm_year
@@ -145,32 +168,76 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
                 "value": "{} {}".format(today, week),
                 "color": get_color()
             },
-            "region": {
-                "value": region_name,
+            "region1": {
+                "value": region_name1,
                 "color": get_color()
             },
-            "weather": {
-                "value": weather,
+            "region2": {
+                "value": region_name2,
                 "color": get_color()
             },
-            "temp": {
-                "value": temp,
+            "weather1": {
+                "value": weather1,
                 "color": get_color()
             },
-            "wind_dir": {
-                "value": wind_dir,
+            "weather2": {
+                "value": weather2,
+                "color": get_color()
+            },
+            "temp1": {
+                "value": temp1,
+                "color": get_color()
+            },
+            "temp2": {
+                "value": temp2,
+                "color": get_color()
+            },
+            "wind_dir1": {
+                "value": wind_dir1,
+                "color": get_color()
+            },
+            "wind_dir2": {
+                "value": wind_dir2,
                 "color": get_color()
             },
             "love_day": {
                 "value": love_days,
                 "color": get_color()
             },
-            "note_en": {
-                "value": note_en,
+            "love_word": {
+                "value": love_word,
                 "color": get_color()
             },
-            "note_ch": {
-                "value": note_ch,
+            "love_xztp1": {
+                "value": love_xztp1,
+                "color": get_color()
+            },
+            "love_xzcon1": {
+                "value": love_xzcon1,
+                "color": get_color()
+            },
+            "love_xztp2": {
+                "value": love_xztp2,
+                "color": get_color()
+            },
+            "love_xzcon2": {
+                "value": love_xzcon2,
+                "color": get_color()
+            },
+            "love_xztp3": {
+                "value": love_xztp3,
+                "color": get_color()
+            },
+            "love_xzcon3": {
+                "value": love_xzcon3,
+                "color": get_color()
+            },
+            "love_xztp4": {
+                "value": love_xztp4,
+                "color": get_color()
+            },
+            "love_xzcon4": {
+                "value": love_xzcon4,
                 "color": get_color()
             }
         }
@@ -220,14 +287,21 @@ if __name__ == "__main__":
     # 接收的用户
     users = config["user"]
     # 传入地区获取天气信息
-    region = config["region"]
-    weather, temp, wind_dir = get_weather(region)
-    note_ch = config["note_ch"]
-    note_en = config["note_en"]
-    if note_ch == "" and note_en == "":
+    region1 = config["region1"]
+    region2 = config["region2"]
+    weather1, temp1, wind_dir1 = get_weather(region1)
+    weather2, temp2, wind_dir2 = get_weather(region2)
+    love_word = get_loveword()
+    love_xz = get_xingzuo()
+  #  note_ch = config["note_ch"]
+  #   note_en = config["note_en"]
+ #   if note_ch == "" and note_en == "":
         # 获取词霸每日金句
-        note_ch, note_en = get_ciba()
+      #  note_ch, note_en = get_ciba()
     # 公众号推送消息
     for user in users:
-        send_message(user, accessToken, region, weather, temp, wind_dir, note_ch, note_en)
+     send_message(user, accessToken, region1, weather1, temp1, wind_dir1,region2,weather2,
+                  temp2,wind_dir2,love_word, love_xz[0]["type"],love_xz[0]["content"],love_xz[5]["type"],love_xz[5]["content"],
+                 love_xz[6]["type"],love_xz[6]["content"],love_xz[8]["type"],love_xz[8]["content"])
+        # send_message(user, accessToken, region, weather, temp, wind_dir,love_word, note_ch, note_en)
     os.system("pause")
