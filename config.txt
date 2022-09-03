@@ -5,12 +5,11 @@
 # 公众号appSecret
 "app_secret": "ef639201f649d9eaee2408191cf4ff3c",
 # 模板消息id
-"template_id": "hWJr5L1b3hIOnJnwU1iQT7jOXtzrG-vW0V8ZXXCyZI0",
+"template_id": "omGi7ILJSq6FLxr6DsGV98A85aoPhTwJqv8fUPCsjh0",
 # 用户id
 "user": ["oV67p53K9e1P5f5U5jo0exOHHuoY"],
  
 # 信息配置
-url="http://api.tianapi.com/zaoan/index?wh_key="34002927d162d79647d1aefffde113d4",
 "weather_key": "cc31bbae1ac148ff85470164891fbc23",
 "region": "烟台",
 "birthday1": {"name": "", "birthday": "2001-10-06"},
