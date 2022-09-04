@@ -227,6 +227,16 @@ if __name__ == "__main__":
     if note_ch == "" and note_en == "":
         # 获取词霸每日金句
         note_ch, note_en = get_ciba()
+     # -*- coding: utf-8 -*-
+import http.client, urllib
+conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
+params = urllib.parse.urlencode({'key':'你的APIKEY'})
+headers = {'Content-type':'application/x-www-form-urlencoded'}
+conn.request('POST','/caihongpi/index',params,headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode('utf-8'))  
+       
     # 公众号推送消息
     for user in users:
         send_message(user, accessToken, region, weather, temp, wind_dir, note_ch, note_en)
