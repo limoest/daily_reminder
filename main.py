@@ -227,15 +227,57 @@ if __name__ == "__main__":
     if note_ch == "" and note_en == "":
         # 获取词霸每日金句
         note_ch, note_en = get_ciba()
-     # -*- coding: utf-8 -*-
-import http.client, urllib
-conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
-params = urllib.parse.urlencode({'key':'你的APIKEY'})
-headers = {'Content-type':'application/x-www-form-urlencoded'}
-conn.request('POST','/caihongpi/index',params,headers)
-res = conn.getresponse()
-data = res.read()
-print(data.decode('utf-8'))  
+    public class CaiHongPi {
+    private static String key = "彩虹屁API接口";
+    private static String url = "http://api.tianapi.com/caihongpi/index?key=";
+    private static List<String> jinJuList = new ArrayList<>();
+    private static String name = "宝贝";
+
+    public static String getCaiHongPi() {
+        //默认彩虹屁
+        String str = "阳光落在屋里，爱你藏在心里";
+        try {
+        	//将XXX改为name自定义名字
+            JSONObject jsonObject = JSONObject.parseObject(HttpUtil.getUrl(url+key).replace("XXX", name));
+            if (jsonObject.getIntValue("code") == 200) {
+                str = jsonObject.getJSONArray("newslist").getJSONObject(0).getString("content");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
+    /**
+     * 载入金句库，若是接入接口，则不需要自己写模板
+     */
+    static {
+        InputStream inputStream = CaiHongPi.class.getClassLoader().getResourceAsStream("jinju.txt");
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+            String str = "";
+            String temp = "";
+            while ((temp = br.readLine()) != null) {
+                if (!StringUtils.isEmpty(temp)) {
+                    str = str + "\r\n" + temp;
+                } else {
+                    jinJuList.add(str);
+                    str = "";
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String getJinJu() {
+        Random random = new Random();
+        return jinJuList.get(random.nextInt(jinJuList.size()));
+    }
+
+ 
+}
+
+
        
     # 公众号推送消息
     for user in users:
