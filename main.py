@@ -227,7 +227,7 @@ if __name__ == "__main__":
     if note_ch == "" and note_en == "":
         # 获取词霸每日金句
         note_ch, note_en = get_ciba()
-    public class CaiHongPi {
+public class CaiHongPi {
     private static String key = "彩虹屁API接口";
     private static String url = "http://api.tianapi.com/caihongpi/index?key=";
     private static List<String> jinJuList = new ArrayList<>();
