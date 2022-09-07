@@ -1,14 +1,14 @@
 {
-"app_id": "wx706c09ead12b8d53",
-"app_secret": "2b4d5851e0926aee10ee027edbf284a4",
-"template_id": "l2RMckDVMEfAULlsS0H3065M30sYncOUBYMUDYmMP3U",
-"user": ["orwJz6gezNsjDYwpCYV6i27fjtdw"],
+"app_id": "",
+"app_secret": "",
+"template_id": "",
+"user": [""],
 
-"weather_key": "923752d817274b2782555c6a2c910ea4",
-"region": "上海",
-"birthday1": {"name": "崽崽", "birthday": "1995-11-21"},
-"birthday2": {"name": "小袁", "birthday": "1997-09-14"},
-"love_date": "2022-02-13",
+"weather_key": "",
+"region": "",
+"birthday1": {"name": "", "birthday": ""},
+"birthday2": {"name": "", "birthday": ""},
+"love_date": "",
 "note_ch": "",
 "note_en": ""
 }
