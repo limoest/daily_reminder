@@ -136,137 +136,35 @@ def get_access_token():
 #     return note_ch, note_en
  
  
-# def send_message(to_user, access_token, region_name1, weather1,temp1 ,wind_dir1, region_name2 ,  weather2 , 
-#                  temp2, wind_dir2 , love_word, love_xztp1,love_xzcon1,love_xztp2,love_xzcon2
-#                 ,love_xztp3,love_xzcon3,love_xztp4,love_xzcon4):
-#     url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
-#     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
-#     year = localtime().tm_year
-#     month = localtime().tm_mon
-#     day = localtime().tm_mday
-#     today = datetime.date(datetime(year=year, month=month, day=day))
-#     week = week_list[today.isoweekday() % 7]
-#     # 获取在一起的日子的日期格式
-#     love_year = int(config["love_date"].split("-")[0])
-#     love_month = int(config["love_date"].split("-")[1])
-#     love_day = int(config["love_date"].split("-")[2])
-#     love_date = date(love_year, love_month, love_day)
-#     # 获取在一起的日期差
-#     love_days = str(today.__sub__(love_date)).split(" ")[0]
-#     # 获取所有生日数据
-#     birthdays = {}
-#     for k, v in config.items():
-#         if k[0:5] == "birth":
-#             birthdays[k] = v
-#     data = {
-#         "touser": to_user,
-#         "template_id": config["template_id"],
-#         "url": "http://weixin.qq.com/download",
-#         "topcolor": "#FF0000",
-#         "data": {
-#             "date": {
-#                 "value": "{} {}".format(today, week),
-#                 "color": get_color()
-#             },
-#             "region1": {
-#                 "value": region_name1,
-#                 "color": get_color()
-#             },
-#             "region2": {
-#                 "value": region_name2,
-#                 "color": get_color()
-#             },
-#             "weather1": {
-#                 "value": weather1,
-#                 "color": get_color()
-#             },
-#             "weather2": {
-#                 "value": weather2,
-#                 "color": get_color()
-#             },
-#             "temp1": {
-#                 "value": temp1,
-#                 "color": get_color()
-#             },
-#             "temp2": {
-#                 "value": temp2,
-#                 "color": get_color()
-#             },
-#             "wind_dir1": {
-#                 "value": wind_dir1,
-#                 "color": get_color()
-#             },
-#             "wind_dir2": {
-#                 "value": wind_dir2,
-#                 "color": get_color()
-#             },
-#             "love_day": {
-#                 "value": love_days,
-#                 "color": get_color()
-#             },
-#             "love_word": {
-#                 "value": love_word,
-#                 "color": get_color()
-#             },
-#             "love_xztp1": {
-#                 "value": love_xztp1,
-#                 "color": get_color()
-#             },
-#             "love_xzcon1": {
-#                 "value": love_xzcon1,
-#                 "color": get_color()
-#             },
-#             "love_xztp2": {
-#                 "value": love_xztp2,
-#                 "color": get_color()
-#             },
-#             "love_xzcon2": {
-#                 "value": love_xzcon2,
-#                 "color": get_color()
-#             },
-#             "love_xztp3": {
-#                 "value": love_xztp3,
-#                 "color": get_color()
-#             },
-#             "love_xzcon3": {
-#                 "value": love_xzcon3,
-#                 "color": get_color()
-#             },
-#             "love_xztp4": {
-#                 "value": love_xztp4,
-#                 "color": get_color()
-#             },
-#             "love_xzcon4": {
-#                 "value": love_xzcon4,
-#                 "color": get_color()
-#             }
-#         }
-#     }
-#     for key, value in birthdays.items():
-#         # 获取距离下次生日的时间
-#         birth_day = get_birthday(value["birthday"], year, today)
-#         if birth_day == 0:
-#             birthday_data = "今天{}生日哦，祝{}生日快乐！".format(value["name"], value["name"])
-#         else:
-#             birthday_data = "距离{}的生日还有{}天".format(value["name"], birth_day)
-#         # 将生日数据插入data
-#         data["data"][key] = {"value": birthday_data, "color": get_color()}
-#     headers = {
-#         'Content-Type': 'application/json',
-#         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
-#                       'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
-#     }
-#     response = post(url, headers=headers, json=data).json()
-#     if response["errcode"] == 40037:
-#         print("推送消息失败，请检查模板id是否正确")
-#     elif response["errcode"] == 40036:
-#         print("推送消息失败，请检查模板id是否为空")
-#     elif response["errcode"] == 40003:
-#         print("推送消息失败，请检查微信号是否正确")
-#     elif response["errcode"] == 0:
-#         print("推送消息成功")
-#     else:
-#         print(response)
+def send_message(to_user, access_token):
+    url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
+    data = {
+        "touser": to_user,
+        "template_id": config["template_id"],
+        "url": "http://weixin.qq.com/download",
+        "topcolor": "#FF0000",
+        "data": {
+        
+            }
+        }
+    }
+   
+    headers = {
+        'Content-Type': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                      'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+    }
+    response = post(url, headers=headers, json=data).json()
+    if response["errcode"] == 40037:
+        print("推送消息失败，请检查模板id是否正确")
+    elif response["errcode"] == 40036:
+        print("推送消息失败，请检查模板id是否为空")
+    elif response["errcode"] == 40003:
+        print("推送消息失败，请检查微信号是否正确")
+    elif response["errcode"] == 0:
+        print("推送消息成功")
+    else:
+        print(response)
  
  
 if __name__ == "__main__":
