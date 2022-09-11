@@ -147,7 +147,6 @@ def send_message(to_user, access_token):
         
             }
         }
-    }
    
     headers = {
         'Content-Type': 'application/json',
