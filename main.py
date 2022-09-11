@@ -1,34 +1,34 @@
-# import random
-# from time import localtime
-# from requests import get, post
-# from datetime import datetime, date
-# from zhdate import ZhDate
-# import sys
-# import os
+import random
+from time import localtime
+from requests import get, post
+from datetime import datetime, date
+from zhdate import ZhDate
+import sys
+import os
  
  
-# def get_color():
-#     # 获取随机颜色
-#     get_colors = lambda n: list(map(lambda i: "#" + "%06x" % random.randint(0, 0xFFFFFF), range(n)))
-#     color_list = get_colors(100)
-#     return random.choice(color_list)
+def get_color():
+    # 获取随机颜色
+    get_colors = lambda n: list(map(lambda i: "#" + "%06x" % random.randint(0, 0xFFFFFF), range(n)))
+    color_list = get_colors(100)
+    return random.choice(color_list)
  
  
-# def get_access_token():
-#     # appId
-#     app_id = config["app_id"]
-#     # appSecret
-#     app_secret = config["app_secret"]
-#     post_url = ("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={}&secret={}"
-#                 .format(app_id, app_secret))
-#     try:
-#         access_token = get(post_url).json()['access_token']
-#     except KeyError:
-#         print("获取access_token失败，请检查app_id和app_secret是否正确")
-#         os.system("pause")
-#         sys.exit(1)
-#     # print(access_token)
-#     return access_token
+def get_access_token():
+    # appId
+    app_id = config["app_id"]
+    # appSecret
+    app_secret = config["app_secret"]
+    post_url = ("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={}&secret={}"
+                .format(app_id, app_secret))
+    try:
+        access_token = get(post_url).json()['access_token']
+    except KeyError:
+        print("获取access_token失败，请检查app_id和app_secret是否正确")
+        os.system("pause")
+        sys.exit(1)
+    # print(access_token)
+    return access_token
  
  
 # def get_weather(region):
@@ -269,39 +269,37 @@
 #         print(response)
  
  
-# if __name__ == "__main__":
-#     try:
-#         with open("config.txt", encoding="utf-8") as f:
-#             config = eval(f.read())
-#     except FileNotFoundError:
-#         print("推送消息失败，请检查config.txt文件是否与程序位于同一路径")
-#         os.system("pause")
-#         sys.exit(1)
-#     except SyntaxError:
-#         print("推送消息失败，请检查配置文件格式是否正确")
-#         os.system("pause")
-#         sys.exit(1)
+if __name__ == "__main__":
+    try:
+        with open("config.txt", encoding="utf-8") as f:
+            config = eval(f.read())
+    except FileNotFoundError:
+        print("推送消息失败，请检查config.txt文件是否与程序位于同一路径")
+        os.system("pause")
+        sys.exit(1)
+    except SyntaxError:
+        print("推送消息失败，请检查配置文件格式是否正确")
+        os.system("pause")
+        sys.exit(1)
  
-#     # 获取accessToken
-#     accessToken = get_access_token()
-#     # 接收的用户
-#     users = config["user"]
-#     # 传入地区获取天气信息
+    # 获取accessToken
+    accessToken = get_access_token()
+    # 接收的用户
+    users = config["user"]
+    # 传入地区获取天气信息
 #     region1 = config["region1"]
 #     region2 = config["region2"]
 #     weather1, temp1, wind_dir1 = get_weather(region1)
 #     weather2, temp2, wind_dir2 = get_weather(region2)
 #     love_word = get_loveword()
 #     love_xz = get_xingzuo()
-#   #  note_ch = config["note_ch"]
-#   #   note_en = config["note_en"]
-#  #   if note_ch == "" and note_en == "":
-#         # 获取词霸每日金句
-#       #  note_ch, note_en = get_ciba()
-#     # 公众号推送消息
-#     for user in users:
-#      send_message(user, accessToken, region1, weather1, temp1, wind_dir1,region2,weather2,
-#                   temp2,wind_dir2,love_word, love_xz[0]["type"],love_xz[0]["content"],love_xz[5]["type"],love_xz[5]["content"],
-#                  love_xz[6]["type"],love_xz[6]["content"],love_xz[8]["type"],love_xz[8]["content"])
-#         # send_message(user, accessToken, region, weather, temp, wind_dir,love_word, note_ch, note_en)
-#     os.system("pause")
+  #  note_ch = config["note_ch"]
+  #   note_en = config["note_en"]
+ #   if note_ch == "" and note_en == "":
+        # 获取词霸每日金句
+      #  note_ch, note_en = get_ciba()
+    # 公众号推送消息
+    for user in users:
+     send_message(user, accessToken)
+        # send_message(user, accessToken, region, weather, temp, wind_dir,love_word, note_ch, note_en)
+    os.system("pause")
