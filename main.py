@@ -119,13 +119,14 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
     lyy_list=["小汤圆今天也要好好爱自己哦~", "小汤圆是世界上最可爱的生物！", "小汤圆诸事顺遂~", "小汤圆今天要开心~", "疯狂星期四！冲啊，美丽的小汤圆！", "再坚持一下，快到周末了！", "小汤圆今天稍稍放松下吧~"]
+    lwy_list=["(小汤圆今天要多喝水哦~)", "(大美女，喝水！)", "(瑶瑶多喝水-.-)", "(喝水给小汤圆带来好运0.0)", "(喝水！)", "(别忘记及时补充水分哦~)", "(小汤圆，水！)"]
     year = localtime().tm_year
     month = localtime().tm_mon
     day = localtime().tm_mday
     today = datetime.date(datetime(year=year, month=month, day=day))
     week = week_list[today.isoweekday() % 7]
     lyy = lyy_list[today.isoweekday() % 7]
-    lwy = "(别忘记多喝水哦~)"
+    lwy = lwy_list[today.isoweekday() % 7]
     # 获取在一起的日子的日期格式
     #love_year = int(config["love_date"].split("-")[0])
     #love_month = int(config["love_date"].split("-")[1])
