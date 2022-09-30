@@ -14,7 +14,7 @@
 "festivals":[{"type":"节日","name":"国庆快乐~","date":"10-01","year":"2022"}],
 "customizedDateList":[{"keyword":"健身减肥开始日","date":"2022-08-01"}]}],
 "holidaytts":false,
-"CIBA":false,
+{"CIBA":false,
 "oneTalk":false,
 "earthyLoveWords":false,
 "momentCopyrighting":false,
