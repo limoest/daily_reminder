@@ -1,7 +1,7 @@
 {
 "APP_ID":"wx74faf27aded989f2",
 "APP_SECRET":"865f3bd179e76c07eb7ac861c51fa9d4",
-"IS_SHOW_COLOR":false,
+"IS_SHOW_COLOR":,
 "CALLBACK_TEMPLATE_ID":"",
 "CALLBACK_USERS":[{"name":"自己","id":""}],
 "USERS":[{"name":"嫩大个帅哥",
