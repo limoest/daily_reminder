@@ -1,6 +1,6 @@
 {
-"APP_ID":"wx74faf27aded989f2",
-"APP_SECRET":"865f3bd179e76c07eb7ac861c51fa9d4",
+"app_ID":"wx74faf27aded989f2",
+"app_Secret":"865f3bd179e76c07eb7ac861c51fa9d4",
 "templateID":"lA7j2oVgIJH4-3bNswpT8p_4vqN7CkOGegVjJIvHzTA",
 "user":["oQ3pg6WD4ZleQrpgxEea_vMbcuPE"],
 "province":"湖北",
