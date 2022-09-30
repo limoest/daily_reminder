@@ -1,14 +1,24 @@
 {
-"app_ID":"wx74faf27aded989f2",
-"app_Secret":"865f3bd179e76c07eb7ac861c51fa9d4",
-"templateID":"lA7j2oVgIJH4-3bNswpT8p_4vqN7CkOGegVjJIvHzTA",
-"user":["oQ3pg6WD4ZleQrpgxEea_vMbcuPE"],
-"province":"湖北",
-"city":"武汉",
+# 公众号配置
+# 公众号appId
+"app_id": "wx74faf27aded989f2",
+# 公众号appSecret
+"app_secret": "865f3bd179e76c07eb7ac861c51fa9d4",
+# 模板消息id
+"template_id": "	lA7j2oVgIJH4-3bNswpT8p_4vqN7CkOGegVjJIvHzTA",
+# 接收公众号消息的微信号，如果有多个，需要在[]里用英文逗号间隔，例如["wx1", "wx2"]
+"user": ["oQ3pg6WD4ZleQrpgxEea_vMbcuPE"],
+
+# 信息配置
+# 所在省份
+"province": "湖北",
+# 所在城市
+"city": "武汉",
 "birthdays":[
 {"name":"帅哥","year":"1999","data":"05-07","type":"new"},
 {"name":"美女","year":"1999","data":"05-17","type":"new"},
 ],
-"loveDate":"2022-09-29",
+# 在一起的日子，格式同上
+"love_date": "2022-09-28",
 "marryDate":"2022-09-30",
 }
