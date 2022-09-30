@@ -1,7 +1,6 @@
 {
 "APP_ID":"wx74faf27aded989f2",
 "APP_SECRET":"865f3bd179e76c07eb7ac861c51fa9d4",
-"IS_SHOW_COLOR":true,
 "CALLBACK_TEMPLATE_ID":"s0i6te0qrsXR0hF1sYqMU-cOmbfyI8Z3aQfYxAX4yOs",
 "CALLBACK_USERS":[{"name":"自己",
 "id":"oQ3pg6WD4ZleQrpgxEea_vMbcuPE"}],
