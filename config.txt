@@ -13,5 +13,14 @@
 "openUrl":"https://shuangxunian.github.io/",
 "festivals":[{"type":"节日","name":"国庆快乐~","date":"10-01","year":"2022"}],
 "customizedDateList":[{"keyword":"健身减肥开始日","date":"2022-08-01"}]}],
-"SWITCH":{"weather":true,"holidaytts":false,"CIBA":false,"oneTalk":false,"earthyLoveWords":false,"momentCopyrighting":false,"poisonChickenSoup":false,"poetry":true,"horoscope":true,"birthdayMessage":true}
+"SWITCH":{"weather":true,
+"holidaytts":false,
+"CIBA":false,
+"oneTalk":false,
+"earthyLoveWords":false,
+"momentCopyrighting":false,
+"poisonChickenSoup":false,
+"poetry":true,
+"horoscope":true,
+"birthdayMessage":true}
 }
