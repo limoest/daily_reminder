@@ -1,26 +1,25 @@
 {
-# 公众号配置
-# 公众号appId
-"app_id": "wx74faf27aded989f2",
-# 公众号appSecret
-"app_secret": "865f3bd179e76c07eb7ac861c51fa9d4",
-# 模板消息id
-"template_id": "s0i6te0qrsXR0hF1sYqMU-cOmbfyI8Z3aQfYxAX4yOs",
-# 接收公众号消息的微信号，如果有多个，需要在[]里用英文逗号间隔，例如["wx1", "wx2"]
-"user": ["oQ3pg6WD4ZleQrpgxEea_vMbcuPE"],
- 
-# 信息配置
-# 和风天气apikey
-"weather_key": "	
-HE2209291746151234",
-# 所在地区，可为省，城市，区，县，同时支持国外城市，例如伦敦
-"region": "上海",
-# 生日1，修改名字为对应需要显示的名字，如果生日为农历，在最前面加上r即可
-"birthday1": {"name": "帅哥", "birthday": "1999-05-07"},
-# 在一起的日子，格式同上，暂不不支持农历
-"Weight loss and fitness": "2022-08-01",
-# 金句中文，如果设置了，则会显示这里的，如果为空，默认会读取金山的每日金句
-"note_ch": "",
-# 金句英文
-"note_en": ""
+"APP_ID":"wx74faf27aded989f2",
+"APP_SECRET":"865f3bd179e76c07eb7ac861c51fa9d4",
+"IS_SHOW_COLOR":true,
+"CALLBACK_TEMPLATE_ID":"s0i6te0qrsXR0hF1sYqMU-cOmbfyI8Z3aQfYxAX4yOs",
+"CALLBACK_USERS":[{"name":"自己",
+"id":"oQ3pg6WD4ZleQrpgxEea_vMbcuPE"}],
+"USERS":[{"name":"帅哥","id":"oQ3pg6WD4ZleQrpgxEea_vMbcuPE",
+"useTemplateId":"s0i6te0qrsXR0hF1sYqMU-cOmbfyI8Z3aQfYxAX4yOs",
+"province":"上海",
+"city":"上海",
+"horoscopeDate":"05-07","horoscopeDateType":"本周",
+"openUrl":"https://shuangxunian.github.io/",
+"festivals":[{"type":"节日","name":"国庆快乐~","date":"10-01","year":"2022"}],
+"customizedDateList":[]}],
+"SWITCH":{"weather":true,"holidaytts":true,
+"CIBA":true,
+"oneTalk":true,
+"earthyLoveWords":false,
+"momentCopyrighting":true,
+"poisonChickenSoup":false,
+"poetry":true,
+"horoscope":true,
+"birthdayMessage":true}
 }
