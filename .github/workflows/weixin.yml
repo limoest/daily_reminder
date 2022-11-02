@@ -1,17 +1,20 @@
 name: weixin
 on:
+  #指定触发事件时，可以限定分支或标签
   workflow_dispatch:
-  schedule: 
+  schedule:
     # 代表国际标准时间21点30分，北京时间需要+8小时，代表北京时间上午5点30分点运行
     - cron: '00 00 * * *'
 jobs:
 #将工作流程中运行的所有作业组合在一起
   build:
-  #定义名为 build 的作业。 子键将定义作业的属性 
-    runs-on: ubuntu-latest 
+  #定义名为 build 的作业。 子键将定义作业的属性
+    #runs-on字段指定运行所需要的虚拟机环境
+    runs-on: ubuntu-latest
+    #steps字段指定每个 Job 的运行步骤，可以包含一个或多个步骤
     steps:
       - uses: actions/checkout@v2
-    
+        #步骤名称。
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
@@ -24,5 +27,6 @@ jobs:
           python -m pip install --upgrade pip
           pip3 install -r requirements.txt
       - name: weixin
+        #该步骤运行的命令或者 action
         run: |
           python3 main.py
